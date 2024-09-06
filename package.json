@@ -1,0 +1,26 @@
+{
+  "name": "consumewise-ai-eyes",
+  "version": "1.0.0",
+  "description": "ConsumeWise AI hackathone",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArshSharan/ConsumeWise-AI-Eyes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArshSharan/ConsumeWise-AI-Eyes/issues"
+  },
+  "homepage": "https://github.com/ArshSharan/ConsumeWise-AI-Eyes#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
+}

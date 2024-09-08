@@ -10,9 +10,16 @@ connectDB();
 
 const app = express();
 
-app.get("/", (req,res)=>{return res.status(200).json({message:"Hello from the other side...."})});
+app.use(express.json());
+
 app.use("/test", testRouter);
 app.use("/api", apiRouter);
+
+app.get("/", (req, res) => {
+  res.send(
+    '<body style="background-color:#000000;"></body>');
+});
+
 
 const port = process.env.PORT || 8000;
 

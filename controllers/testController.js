@@ -12,7 +12,7 @@ export async function testMongoDb(req,res) {
 
     product = new Product({
       productName: "Chemicalsss",
-      productId: "1",
+      productEAN: "1",
       description: "Very Bad for you do not consume",
     })
     await product.save();

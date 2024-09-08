@@ -10,13 +10,13 @@ export async function verdictGenerate(req,res) {
     
     return res.status(200).json({
       message: "VerdictGenerated",
-      verdict: console.assert(false, "REPLACE VERDICT WITH MISLEADING OR TRUE")
+      verdict: console.assert(false, "REPLACE VERDICT WITH MISLEADING OR TRUE"),
       detailResponse: console.assert(false, "REPLACE detailResponse WithReponse")
     });
   }
   catch(err){
     console.log(err);
-    return res.status(500).json({ message: "Internal Server Error" })
+    return res.status(500).json({ message: "Internal Server Error" });
   }
   
 }

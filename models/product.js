@@ -9,7 +9,7 @@ const productSchema = mongoose.Schema({
     lowercase: true,
   },
 
-  productId: {
+  productEan: {
   type: String,
   required: true,
   unique: true,

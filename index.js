@@ -17,12 +17,12 @@ app.use("/api", apiRouter);
 
 app.get("/", (req, res) => {
   res.send(
-    '<body style="background-color:#000000;"></body>');
+    '<body style="background-color:#0;"></body>');
 });
 
 
 const port = process.env.PORT || 8000;
 
 
-app.listen(port, ()=> console.log(`Server running on http://localhost:${port} !`));
-  
+app.listen(port, () => console.log(`Server running on http://localhost:${port} !`));
+

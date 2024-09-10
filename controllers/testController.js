@@ -1,9 +1,9 @@
 import Product from "../models/product.js"
-export async function testMongoDb(req,res) {
-  try{
+export async function testMongoDb(req, res) {
+  try {
 
-    let product = await Product.findOne({ productId: "1" });
-    if(product){
+    let product = await Product.findOne({ productEAN: "1" });
+    if (product) {
       return res.status(200).json({
         message: "Product Exists in DB, test 2 Successfull",
         product: product
@@ -14,6 +14,10 @@ export async function testMongoDb(req,res) {
       productName: "Chemicalsss",
       productEAN: "1",
       description: "Very Bad for you do not consume",
+      ingredients: [
+        { name: "water", amount: 100.23 },
+        { name: "air", amount: 10.23 },
+      ],
     })
     await product.save();
     return res.status(200).json({
@@ -21,9 +25,9 @@ export async function testMongoDb(req,res) {
       product: product
     })
   }
-  catch(err){
+  catch (err) {
     console.log(err);
     return res.status(500).json({ message: "Internal Server Error" })
   }
-  
+
 }

@@ -1,8 +1,8 @@
 import Product from "../models/product.js"
 
-export async function dataBaseReadByEan(ean) {
+export async function dataBaseReadByEAN(ean) {
   try {
-    const product = await Product.findOne({ productEan: ean });
+    const product = await Product.findOne({ productEAN: ean });
 
     return product;
   }

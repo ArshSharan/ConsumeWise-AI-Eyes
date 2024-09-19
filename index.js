@@ -17,7 +17,7 @@ app.use("/api", apiRouter);
 
 app.get("/", (req, res) => {
   res.send(
-    '<body style="background-color:#0;"></body>');
+    '<body style="background-color:black;"></body>');
 });
 
 

@@ -4,7 +4,7 @@ import { dataBaseReadByEAN } from "../controllers/dataBaseController.js"
 export async function verdictGenerate(req, res) {
   try {
 
-    const product = await dataBaseReadByEAN(req.body.ean);
+    const product = await dataBaseReadByEAN(req.query.ean);
     if(!product){
       return res.status(404).json({
         message:'Product EAN not recognized'

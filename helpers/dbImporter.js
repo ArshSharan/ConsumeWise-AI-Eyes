@@ -1,12 +1,11 @@
-import mongoose from "mongoose"
 import Product from "../models/product.js"
+import DocImport from "../models/docImport.js"
 import connectDB from "./dbController.js"
 import { config } from "dotenv"
 import logger from "../logs/logger.js"
 
 config()
 await connectDB();
-const ProductsInput = mongoose.model('importFromHere', new mongoose.Schema({}, { strict: false }))
 
 function addField(prod, field) {
   if (field)
@@ -32,7 +31,7 @@ function objectParse(field) {
 }
 
 async function processDoc(num = 0) {
-  const doc = await ProductsInput.findOne().skip(num)
+  const doc = await DocImport.findOne().skip(num)
   // if (doc.lang != "en")
   //   console.log("TETS")
   //
@@ -63,7 +62,7 @@ async function processDoc(num = 0) {
   await newproduct.save()
 }
 
-let count = await ProductsInput.countDocuments({})
+let count = await DocImport.countDocuments({})
 let count_cpy = count
 console.log(`Parsing ${count} documents`);
 

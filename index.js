@@ -3,6 +3,9 @@ import connectDB from "./helpers/dbController.js";
 import { config } from "dotenv";
 import testRouter from "./routes/testRouter.js"
 import apiRouter from "./routes/apiRouter.js"
+import _Product from "./models/product.js"
+import _Response from "./models/responseCache.js"
+import _DocImport from "./models/docImport.js"
 
 config();
 connectDB();

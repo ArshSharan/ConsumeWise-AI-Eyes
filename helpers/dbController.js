@@ -1,9 +1,13 @@
-import mongooose from "mongoose";
+import mongoose from 'mongoose';
 
-export function connectDB() {
-  mongooose.connect(process.env.DB_URL);
-  const connection = mongooose.connection;
-  connection.once("open", () => {
-    console.log("Database connected");
+
+const connectDB = () => mongoose.connect(process.env.DB_URL)
+  .then(() => {
+    console.log("Connected to Database!");
+  })
+  .catch(error => {
+    console.log(error);
+    logger.error(error);
   });
-}
+
+export default connectDB;

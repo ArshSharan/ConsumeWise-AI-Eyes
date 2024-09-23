@@ -16,7 +16,7 @@ const productSchema = mongoose.Schema({
 
   description: {
     type: String,
-    required: true,
+    required: false,
   },
 
   brand: {
@@ -25,26 +25,22 @@ const productSchema = mongoose.Schema({
   },
 
   productQty: {
-    type: Number,
+    type: String,
     required: false
   },
 
   servingSize: {
-    type: Number,
+    type: String,
     required: false
   },
 
   ingredients: {
     type: Object,
     required: false,
-    default: [],
+    default: {},
   },
 
-  healthClaims: {
-    type: [{ type: String }],
-    required: false,
-    default: [],
-  },
+  createdAt: { type: Date }
 
 })
 

@@ -4,3 +4,6 @@ node_modules
 *.ign*
 build
 build
+logs/error.log
+logs/info.log
+logs/protect.log

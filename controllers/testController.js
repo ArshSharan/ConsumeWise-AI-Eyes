@@ -14,10 +14,10 @@ export async function testMongoDb(req, res) {
       productName: "Chemicalsss",
       productEAN: "1",
       description: "Very Bad for you do not consume",
-      ingredients: [
-        { name: "water", amount: 100.23 },
-        { name: "air", amount: 10.23 },
-      ],
+      ingredients: {
+        "water": 100.23,
+        "air": 10.23,
+      },
     })
     await product.save();
     return res.status(200).json({

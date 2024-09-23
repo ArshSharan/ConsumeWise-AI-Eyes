@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
 const productSchema = mongoose.Schema({
 
@@ -35,12 +35,7 @@ const productSchema = mongoose.Schema({
   },
 
   ingredients: {
-    type: [{
-      type: {
-        name: { type: String },
-        amount: { type: Number, default: 0 },
-      }
-    }],
+    type: Object,
     required: false,
     default: [],
   },

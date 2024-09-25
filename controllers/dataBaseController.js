@@ -28,6 +28,8 @@ export async function dataBaseReadCacheByEAN(ean) {
 
 export async function dataBaseNewCacheResponse(response) {
   try {
+    if (!response.verdict)
+      return
     const cache = new Response({
       productEAN: response.productEAN || null,
       verdict: response.verdict || null,

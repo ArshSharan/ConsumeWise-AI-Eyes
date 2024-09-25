@@ -12,13 +12,7 @@ function addField(prod, field) {
     prod.description += '\n' + field;
 }
 
-function watch(ms) {
-  if (count <= 0)
-    endJob();
-  setTimeout(watch, 2 * ms)
-}
-
-function endJob() {
+function endImport() {
   console.log("Import Complete")
   process.exit()
 }
@@ -30,46 +24,85 @@ function objectParse(field) {
   return null;
 }
 
+function ingredientsParse(nutriments) {
+  try {
+    const ingredients = {}
+
+    for (let field in nutriments) {
+      const fieldSplit = field.split("_")
+      const reduced_field = fieldSplit[0]
+      if (fieldSplit[fieldSplit.length - 1] == "unit")
+        continue
+      if (reduced_field in ingredients)
+        continue
+      ingredients[reduced_field] = String(nutriments[field]);
+      if (nutriments[reduced_field + "_unit"])
+        ingredients[reduced_field] = ingredients[reduced_field] + " " + nutriments[reduced_field + "_unit"]
+    }
+
+    return ingredients
+  }
+  catch (err) {
+    console.error(err)
+  }
+
+}
+
 async function processDoc(num = 0) {
   const doc = await DocImport.findOne().skip(num)
   // if (doc.lang != "en")
   //   console.log("TETS")
   //
-  if (!doc.product_name || !doc.code || !doc.nutriments) {
+  if (!doc.product_name || !doc.code || !doc.nutriments || Object.keys(doc.nutriments).length === 0) {
     logger.info(`Not writable ${doc.product_name} ${doc.code}`)
     return;
   }
 
-  const newproduct = new Product({
+  const newProduct = new Product({
     productEAN: doc.code,
     productName: doc.product_name,
     brand: doc.brands || doc.brandOwner || "unknown",
     servingSize: doc.serving_size || "unknown",
     productQty: doc.quantity || "unknown",
     description: doc.product_name,
-    ingredients: doc.nutriments || {},
+    ingredients: ingredientsParse(doc.nutriments),
     createdAt: Date.now()
   })
 
-  addField(newproduct, doc.ingredients_text_with_allergens_en);
-  addField(newproduct, doc.generic_name_en);
-  addField(newproduct, doc.categories_imported);
+  addField(newProduct, doc.ingredients_text_with_allergens_en);
+  addField(newProduct, doc.generic_name_en);
+  addField(newProduct, doc.categories_imported);
   // addField(newproduct, doc.nutrition_data);
-  addField(newproduct, `Nutrition grade: ${doc.nutrition_grades}`);
-  addField(newproduct, objectParse(doc.ingredients_analysis_tags));
-  addField(newproduct, objectParse(doc.categories_tags));
-  addField(newproduct, objectParse(doc._keywords));
-  await newproduct.save()
+  addField(newProduct, `Nutrition grade: ${doc.nutrition_grades}`);
+  addField(newProduct, objectParse(doc.ingredients_analysis_tags));
+  addField(newProduct, objectParse(doc.categories_tags));
+  addField(newProduct, objectParse(doc._keywords));
+  await newProduct.save()
 }
 
-let count = await DocImport.countDocuments({})
-let count_cpy = count
-console.log(`Parsing ${count} documents`);
 
-for (let i = 0; i < count_cpy; i++) {
-  processDoc(i).catch(err => logger.error(err)).finally(() => count--)
+async function dispatch() {
+
+  const count = await DocImport.countDocuments({});
+  let count_cpy = count;
+  const importJobs = [];
+  const moduloCheck = Math.floor(count / 10);
+  console.log(`Parsing ${count} documents`);
+
+  for (let i = 0; i < count; i++) {
+    importJobs.push(
+      processDoc(i)
+        .catch(err => logger.error(err))
+        .finally(() => {
+          count_cpy--;
+          if (count_cpy % moduloCheck == 0)
+            console.log(`${count_cpy} Documents left`);
+        })
+    );
+  }
+  console.log("All Jobs dispatched");
+  await Promise.all(importJobs);
+  endImport()
+
 }
-console.log("All Jobs dispatched")
-
-watch(5000)
-
+dispatch();

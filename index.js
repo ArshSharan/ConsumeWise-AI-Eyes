@@ -8,7 +8,7 @@ import _Response from "./models/responseCache.js"
 import _DocImport from "./models/docImport.js"
 
 config();
-connectDB();
+await connectDB();
 
 const app = express();
 

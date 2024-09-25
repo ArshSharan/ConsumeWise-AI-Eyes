@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import logger from "../logs/logger.js"
 
 
 const connectDB = () => mongoose.connect(process.env.DB_URL)

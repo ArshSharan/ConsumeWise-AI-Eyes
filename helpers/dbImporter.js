@@ -73,7 +73,6 @@ async function processDoc(num = 0) {
   addField(newProduct, doc.generic_name_en);
   addField(newProduct, doc.categories_imported);
   // addField(newproduct, doc.nutrition_data);
-  addField(newProduct, `Nutrition grade: ${doc.nutrition_grades}`);
   addField(newProduct, objectParse(doc.ingredients_analysis_tags));
   addField(newProduct, objectParse(doc.categories_tags));
   addField(newProduct, objectParse(doc._keywords));

@@ -17,11 +17,21 @@ function endImport() {
   process.exit()
 }
 
+function unknownParse(field) {
+  return field
+}
+
+
 function objectParse(field) {
-  if (field) {
-    return field.join(" ").replace(/en:/g, '');
-  }
-  return null;
+  if (!field)
+    return null
+  return JSON.stringify(field).replace(/[{}]/g, "");
+}
+
+function listParse(field) {
+  if (!field)
+    return null;
+  return field.join(" ").replace(/en:/g, '');
 }
 
 function ingredientsParse(nutriments) {
@@ -73,9 +83,9 @@ async function processDoc(num = 0) {
   addField(newProduct, doc.generic_name_en);
   addField(newProduct, doc.categories_imported);
   // addField(newproduct, doc.nutrition_data);
-  addField(newProduct, objectParse(doc.ingredients_analysis_tags));
-  addField(newProduct, objectParse(doc.categories_tags));
-  addField(newProduct, objectParse(doc._keywords));
+  // addField(newProduct, unknownParse(listParse(doc.ingredients_analysis_tags)));
+  addField(newProduct, listParse(doc.categories_tags));
+  addField(newProduct, listParse(doc._keywords));
   await newProduct.save()
 }
 

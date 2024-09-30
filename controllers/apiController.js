@@ -1,8 +1,10 @@
 import {
   dataBaseReadProductByEAN, dataBaseReadCacheByEAN, dataBaseNewCacheResponse
 } from "../controllers/dataBaseController.js"
+import logger from "../logs/logger.js";
 
-
+import {geminiController} from "./geminiController.js"
+import { marked } from "marked";
 async function modelCommunicate(ean) {
   const product = await dataBaseReadProductByEAN(ean);
   if (!product)
@@ -11,11 +13,13 @@ async function modelCommunicate(ean) {
       verdict: null,
       response: "Product not found"
     }
+    const analysis = await geminiController(product);
+    const analysisHtml = marked(analysis);
 
   return {
     productEAN: ean,
-    verdict: console.assert(false, "REPLACE THIS WITH MISLEADING OR TRUE"),
-    response: console.assert(false, "REPLACE THIS WITH THE RESPONSE") //TODO: Replace this with the response from gemini
+    verdict: true,
+    response: analysisHtml
   }
 }
 
@@ -26,7 +30,10 @@ async function respGen(ean) {
     return cachedResponse;
 
   const newResponse = await modelCommunicate(ean);
-  await dataBaseNewCacheResponse(newResponse);
+  dataBaseNewCacheResponse(newResponse)
+  .then(
+    ()=>logger.info(`${ean} added to db`)
+  ).catch(err=>logger.error(`Failed to add ${ean} to db`));
   return newResponse;
 
 }
@@ -37,7 +44,6 @@ export async function verdictGenerate(req, res) {
 
     return res.status(response.verdict ? 200 : 404).json({
       message: "Verdict Generated",
-      verdict: response.verdict,
       detailResponse: response.response
     });
   }
@@ -45,5 +51,4 @@ export async function verdictGenerate(req, res) {
     console.log(err);
     return res.status(500).json({ message: "Internal Server Error" });
   }
-
 }

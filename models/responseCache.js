@@ -9,8 +9,8 @@ const responseSchema = mongoose.Schema({
   },
 
   verdict: {
-    type: String,
-    required: true
+    type: Boolean,
+    required: false
   },
 
   response: {

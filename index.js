@@ -1,5 +1,5 @@
 import express from "express";
-import connectDB from "./helpers/dbController.js";
+import connectDB from "./helpers/dbInitializer.js";
 import { config } from "dotenv";
 import testRouter from "./routes/testRouter.js"
 import apiRouter from "./routes/apiRouter.js"

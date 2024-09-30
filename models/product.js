@@ -42,6 +42,16 @@ const productSchema = mongoose.Schema({
 
   createdAt: { type: Date }
 
+},
+{
+  toObject:{
+    transform (_doc,ret){
+    delete ret._id;
+    delete ret.__v;
+    delete ret.createdAt;
+    return ret;
+  } 
+}
 })
 
 const Product = mongoose.model("product", productSchema);

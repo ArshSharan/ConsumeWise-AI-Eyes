@@ -1,0 +1,8 @@
+services:
+  genzai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aieyes
+    ports:
+      - ${PORT}:${PORT}

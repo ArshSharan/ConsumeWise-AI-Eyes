@@ -23,6 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "nodemon ./index.js",
+    "start:prod": "node ./index.js",
     "dbImport": "node ./helpers/dbImporter.js"
   },
   "eslintConfig": {

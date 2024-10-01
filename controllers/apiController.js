@@ -44,7 +44,7 @@ export async function verdictGenerate(req, res) {
 
     return res.status(response.verdict ? 200 : 404).json({
       message: "Verdict Generated",
-      detailResponse: response.response
+      response: response.response
     });
   }
   catch (err) {

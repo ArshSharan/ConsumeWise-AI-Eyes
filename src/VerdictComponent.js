@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import parse from "html-react-parser"
 
 const VerdictComponent = () => {
     const [ean, setEan] = useState("");
@@ -9,7 +10,7 @@ const VerdictComponent = () => {
         try {
             const res = await fetch(`http://localhost:8008/api/verdict?ean=${ean}`);
             const data = await res.json();
-            setResponse(data);
+            setResponse(parse(data.response));
         } catch (error) {
             console.error("Error fetching the verdict:", error);
         }
@@ -32,8 +33,7 @@ const VerdictComponent = () => {
             </form>
             {response && (
                 <div>
-                    <h2>Response:</h2>
-                    <pre>{JSON.stringify(response, null, 2)}</pre>
+                    {response}
                 </div>
             )}
         </div>

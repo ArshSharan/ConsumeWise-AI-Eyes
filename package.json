@@ -14,6 +14,7 @@
     "barcode-detector": "^2.2.8",
     "barcode-detector-polyfill": "^0.1.2",
     "cors": "^2.8.5",
+    "html-react-parser": "^5.1.16",
     "html5-qrcode": "^2.3.8",
     "jsqr": "^1.4.0",
     "marked": "^14.1.2",

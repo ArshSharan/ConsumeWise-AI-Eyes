@@ -38,7 +38,7 @@ function App() {
     if (barcodes.length > 0) {
       setEan(barcodes[0].rawValue);
       setScanning(true);
-      //stopWebcam();
+      stopWebcam();
     }
   };
 

@@ -6,7 +6,7 @@ const Home = () => {
     <div className="home-container">
       <div className="content-container">
         <h1>ConsumeWise</h1>
-        <p>Nourishment Starts with a Scan</p>
+        <p>Nourishment starts with a scan</p>
       </div>
     </div>
   );

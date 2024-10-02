@@ -11,7 +11,7 @@ async function modelCommunicate(ean) {
     return {
       productEAN: ean,
       verdict: null,
-      response: "Product not found"
+      response: "Oops! Product not found."
     }
     const analysis = await geminiController(product);
     const analysisHtml = marked(analysis);

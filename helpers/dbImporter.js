@@ -7,6 +7,14 @@ import logger from "../logs/logger.js"
 config()
 await connectDB();
 
+function clip(fraction) {
+  const lim = 10_000;
+  if (fraction > lim) {
+    return lim;
+  }
+  return Math.floor(fraction);
+}
+
 function addField(prod, field) {
   if (field)
     prod.description += '\n' + field;
@@ -58,12 +66,14 @@ function ingredientsParse(nutriments) {
 
 }
 
-async function processDoc(num = 0) {
-  const doc = await DocImport.findOne().skip(num)
-  // if (doc.lang != "en")
-  //   console.log("TETS")
-  //
-  if (!doc.product_name || !doc.code || !doc.nutriments || Object.keys(doc.nutriments).length === 0) {
+async function processDoc(num = 0, eanRegex = /.*/) {
+  const doc = await DocImport.findOne({ code: { $regex: eanRegex } }).skip(num)
+  if (!doc) {
+    logger.info(`Product not found: matching ${eanRegex}`)
+    return;
+  }
+
+  if (!doc.product_name || !doc.nutriments || Object.keys(doc.nutriments).length === 0) {
     logger.info(`Not writable ${doc.product_name} ${doc.code}`)
     return;
   }
@@ -82,38 +92,36 @@ async function processDoc(num = 0) {
   addField(newProduct, doc.ingredients_text_with_allergens_en);
   addField(newProduct, doc.generic_name_en);
   addField(newProduct, doc.categories_imported);
-  // addField(newproduct, doc.nutrition_data);
-  // addField(newProduct, unknownParse(listParse(doc.ingredients_analysis_tags)));
   addField(newProduct, listParse(doc.categories_tags));
   addField(newProduct, listParse(doc._keywords));
   await newProduct.save()
 }
 
 
-async function dispatch(innit = 0, count = 10_000) {
-
-  let count_cpy = count;
+async function dispatch(innit = 0, count = 10_000, eanRegex) {
   const importJobs = [];
-  const moduloCheck = Math.floor(count / 5);
   console.log(`Parsing ${count} documents from ${innit}`);
 
-  for (let i = innit; i < count; i++) {
+  for (let i = innit; i < innit + count; i++) {
     importJobs.push(
-      processDoc(i)
+      processDoc(i, eanRegex)
         .catch(err => logger.error(err))
-        .finally(() => {
-          count_cpy--;
-          if (count_cpy % moduloCheck == 0)
-            console.log(`${count_cpy} Documents left`);
-        })
     );
   }
   console.log("Jobs dispatched");
   await Promise.all(importJobs);
 
 }
-const countDocs = await DocImport.countDocuments({});
-for (let i = 150_000; i <= countDocs; i += 10_000) {
-  await dispatch(i, i + 10_000);
+async function batchSplit() {
+
+  const eanRegex = /^890/
+  const countDocs = await DocImport.countDocuments({ code: { $regex: eanRegex } });
+  const processFraction = clip(countDocs / 10);
+  console.log(`${countDocs} Valid documents mathcing ean code`);
+  for (let i = 0; i <= countDocs; i += processFraction) {
+    await dispatch(i, processFraction, eanRegex);
+  }
+  endImport()
 }
-endImport()
+
+batchSplit();

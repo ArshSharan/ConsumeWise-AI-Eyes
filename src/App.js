@@ -42,7 +42,7 @@ function App() {
   };
 
   useEffect(() => {
-    const interval = setInterval(handleTakePicture, 1000); 
+    const interval = setInterval(handleTakePicture, 100); 
     return () => clearInterval(interval); 
   }, [])
 

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {BarcodeDetector} from 'barcode-detector/pure';
+import { BarcodeDetector } from 'barcode-detector/pure';
 import VerdictComponent from './VerdictComponent.js';
 
 function App() {
-  const [eanNumber, setEanNumber] = useState('');
+  const [ean, setEan] = useState('');
   const [scanning, setScanning] = useState(false);
   const [videoStream, setVideoStream] = useState(null);
   const [image, setImage] = useState(null);
@@ -26,10 +26,15 @@ function App() {
     context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
     const imageData = canvas.toDataURL('image/png');
     const barcodeDetector = new BarcodeDetector({
-      formats: ['ean_13']});
+      formats: ['ean_13']
+    });
     const barcodes = await barcodeDetector.detect(canvas);
-    console.log(barcodes[0]?.rawValue);  
+    console.log(barcodes[0]?.rawValue)
+    if (barcodes.length > 0) {
+      setEan(barcodes[0].rawValue);
+    }
     setImage(imageData);
+
   };
 
   const startWebcam = async () => {
@@ -62,7 +67,7 @@ function App() {
 
   return (
     <div>
-      <VerdictComponent />
+      <VerdictComponent ean={ean} setEan={setEan} />
       <h1>Barcode Scanner</h1>
       <button onClick={handleScan}>{scanning ? 'Stop' : 'Scan'}</button>
       {scanning && (

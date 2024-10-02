@@ -10,10 +10,14 @@
     background-color: #009bfb;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    background-image: linear-gradient(to bottom, #0073ff, #1294ff);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
   }
   
   button:hover {
-    background-color: #009bfb;
+    background-image: linear-gradient(to bottom, #1294ff, #0073ff);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
   }
   

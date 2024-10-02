@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 header {
@@ -59,6 +59,10 @@ nav button {
 nav button:hover {
   background: #f0c040;
   color: black;
+}
+
+nav {
+  padding-right: 30px;
 }
 
 main {

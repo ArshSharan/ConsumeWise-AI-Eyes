@@ -78,12 +78,12 @@ function App() {
     <div>
       <header>
         <h1 onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
-          Barcode Scanner
+          GenZ-AI
         </h1>
         <nav>
           <button onClick={() => document.getElementById('home').scrollIntoView({ behavior: 'smooth' })}>Home</button>
           <button onClick={() => document.getElementById('about').scrollIntoView({ behavior: 'smooth' })}>About</button>
-          <button onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>Products</button>
+          <button onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>Scanner</button>
           <button onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>Contact</button>
         </nav>
       </header>

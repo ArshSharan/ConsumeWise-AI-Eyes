@@ -26,7 +26,7 @@ export async function geminiController(product) {
 
       b. How processed and nutrient deficit is the product?
 
-      c. Harmful Ingredients present
+      c. Check if any harmful Ingredients present or not?
 
       d. If people follow certain diets, does it comply with it
 
@@ -38,8 +38,9 @@ export async function geminiController(product) {
 
       • The information should add value to the user such that helping them make a decision
       
-      make the output concise and make sure to have all the subheadings provided in their respective order. It should be 
-      informative to the consumer .
+      make the output concise and make sure to have all the subheadings provided in their respective order. 
+      
+      It should be informative to the consumer.
       `
 });
 

@@ -82,7 +82,9 @@ section {
 }
 
 #scanner {
-  background: url('../Images/strawberry.jpg') no-repeat center center/cover;
+  background: url('../Images/fruits.jpg') no-repeat center center/cover;
+  font-family: 'Times New Roman';
+  font-size: 30px;
 }
 
 #about {

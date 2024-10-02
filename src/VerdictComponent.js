@@ -22,7 +22,6 @@ const VerdictComponent = ({ ean, setEan }) => {
     <div className="verdict-container">
       <form onSubmit={handleSubmit}>
         <label>
-          EAN:
           <input
             type="text"
             value={ean}

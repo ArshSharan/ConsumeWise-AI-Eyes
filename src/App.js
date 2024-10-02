@@ -9,14 +9,13 @@ import './App.css';
 
 function App() {
   const [ean, setEan] = useState('');
-  const [scanning, setScanning] = useState(false);
+  const [scanning, setScanning] = useState(true);
   const [videoStream, setVideoStream] = useState(null);
-  const [image, setImage] = useState(null);
   const videoRef = useRef(null);
 
   const handleScan = async () => {
     setScanning(!scanning);
-    if (scanning) {
+    if (!scanning) {
       stopWebcam();
     } else {
       startWebcam();
@@ -24,20 +23,29 @@ function App() {
   };
 
   const handleTakePicture = async () => {
+    if (!videoRef.current)
+      return;
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
     canvas.width = videoRef.current.videoWidth;
     canvas.height = videoRef.current.videoHeight;
     context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-    const imageData = canvas.toDataURL('image/png');
-    const barcodeDetector = new BarcodeDetector({ formats: ['ean_13'] });
+    const barcodeDetector = new BarcodeDetector({
+      formats: ['ean_13']
+    });
     const barcodes = await barcodeDetector.detect(canvas);
     console.log(barcodes[0]?.rawValue);
     if (barcodes.length > 0) {
       setEan(barcodes[0].rawValue);
+      setScanning(true);
+      //stopWebcam();
     }
-    setImage(imageData);
   };
+
+  useEffect(() => {
+    const interval = setInterval(handleTakePicture, 1000); // Update every second
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [])
 
   const startWebcam = async () => {
     try {
@@ -51,7 +59,7 @@ function App() {
   };
 
   const stopWebcam = () => {
-    if (videoStream) {
+    if (videoRef.current) {
       const video = videoRef.current;
       video.srcObject.getTracks().forEach((track) => track.stop());
       setVideoStream(null);
@@ -93,26 +101,24 @@ function App() {
             scanning={scanning}
             videoRef={videoRef}
             videoStream={videoStream}
-            image={image}
             ean={ean}
           />
           <VerdictComponent ean={ean} setEan={setEan} />
           <h1>Barcode Scanner</h1>
-          <button onClick={handleScan}>{scanning ? 'Stop' : 'Scan'}</button>
-          {scanning && (
+          <button onClick={handleScan}>{scanning ? 'Scan' : 'Stop'}</button>
+          {!scanning && (
             <video ref={videoRef} autoPlay playsInline style={{ width: '100%' }} />
           )}
           <button onClick={handleTakePicture} disabled={!videoStream}>
             Take Picture
           </button>
-          {image && (
-            <img src={image} alt="Screenshot" style={{ width: '100%' }} />
-          )}
+          
         </section>
         <section id="contact">
           <Contact />
         </section>
       </main>
+      
     </div>
   );
 }

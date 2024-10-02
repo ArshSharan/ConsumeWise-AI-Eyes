@@ -23,7 +23,7 @@ header {
   color: #333; 
   border: none; 
   padding: 10px 15px; 
-  font-size: 14px; /* Smaller for mobile */
+  font-size: 14px; 
   cursor: pointer;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -35,7 +35,7 @@ header {
 
 header h1 {
   cursor: pointer;
-  font-size: 22px; /* Adjusted size */
+  font-size: 22px; 
   margin: 0;
   transition: color 0.3s ease;
 }
@@ -48,7 +48,7 @@ nav button {
   background: none;
   color: white;
   border: 1px solid white;
-  padding: 8px 12px; /* Slightly smaller for mobile */
+  padding: 8px 12px; 
   margin-left: 10px;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
@@ -60,7 +60,7 @@ nav button:hover {
 }
 
 nav {
-  padding-right: 20px; /* Adjusted padding for mobile */
+  padding-right: 20px; 
 }
 
 main {
@@ -68,7 +68,7 @@ main {
 }
 
 section {
-  padding: 30px; /* Adjust padding for mobile */
+  padding: 30px; 
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -107,10 +107,10 @@ section {
 
 #scanner {
   font-family: 'Times New Roman';
-  font-size: 24px; /* Adjusted font size for mobile */
+  font-size: 24px; 
 }
 
-/* Fade-in animation */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -139,8 +139,8 @@ section {
   background-color: #4CAF50;
   color: #fff;
   border: none;
-  padding: 8px 16px; /* Adjusted padding for mobile */
-  font-size: 14px; /* Adjusted font size for mobile */
+  padding: 8px 16px; 
+  font-size: 14px; 
   cursor: pointer;
   border-radius: 5px;
   margin: 0 10px;
@@ -150,60 +150,60 @@ section {
   background-color: #3e8e41;
 }
 
-/* Media Queries for Mobile Responsiveness */
+
 @media (max-width: 768px) {
   header {
-    padding: 10px 15px; /* Reduced padding on mobile */
+    padding: 10px 15px; 
   }
 
   header h1 {
-    font-size: 18px; /* Smaller font size for mobile */
+    font-size: 18px;
   }
 
   .header button {
     padding: 8px 12px;
-    font-size: 12px; /* Smaller font size for mobile */
+    font-size: 12px; 
   }
 
   nav button {
-    padding: 6px 10px; /* Smaller padding on buttons */
+    padding: 6px 10px; 
   }
 
   section {
-    padding: 20px; /* Reduce padding on mobile */
+    padding: 20px; 
   }
 
   .button-container {
     padding: 8px;
-    top: -30px; /* Adjust position for smaller screens */
+    top: -30px; 
   }
 
   .button-container button {
     padding: 6px 12px;
-    font-size: 12px; /* Adjust font size */
+    font-size: 12px; 
   }
 }
 
 @media (max-width: 480px) {
   header {
     flex-direction: column;
-    align-items: flex-start; /* Stack items vertically */
+    align-items: flex-start; 
   }
 
   nav {
     padding-right: 0;
-    margin-top: 10px; /* Space below the logo */
+    margin-top: 10px;
   }
 
   .button-container {
-    top: -20px; /* Further adjustment for very small screens */
+    top: -20px; 
   }
 
   section {
-    padding: 15px; /* Minimized padding for mobile */
+    padding: 15px; 
   }
 
   #scanner {
-    font-size: 20px; /* Even smaller font for small screens */
+    font-size: 20px; 
   }
 }

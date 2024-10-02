@@ -38,8 +38,7 @@ const Contact = () => {
         <button type="submit">Send</button>
       </form>
       <div className="contact-info">
-        <p>Email: abc@gmail.com</p>
-        <p>Phone: +123 456 7890</p>
+        <a href="https://linktr.ee/bihanbanerjee04" target="_blank" rel="noopener noreferrer"><p>Reach out to the devs</p></a>
       </div>
     </div>
   );

@@ -6,7 +6,6 @@ import About from './About.js';
 import Items from './Items.js';
 import Contact from './Contact.js';
 import './App.css';
-
 function App() {
   const [ean, setEan] = useState('');
   const [scanning, setScanning] = useState(true);
@@ -43,8 +42,8 @@ function App() {
   };
 
   useEffect(() => {
-    const interval = setInterval(handleTakePicture, 1000); // Update every second
-    return () => clearInterval(interval); // Cleanup on unmount
+    const interval = setInterval(handleTakePicture, 1000); 
+    return () => clearInterval(interval); 
   }, [])
 
   const startWebcam = async () => {
@@ -77,9 +76,10 @@ function App() {
   return (
     <div>
       <header>
-        <h1 onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
+        <h1 onClick={() => document.getElementById('scanner').scrollIntoView({ behavior: 'smooth' })}>
           GenZ-AI
         </h1>
+        
         <nav>
           <button onClick={() => document.getElementById('home').scrollIntoView({ behavior: 'smooth' })}>Home</button>
           <button onClick={() => document.getElementById('scanner').scrollIntoView({ behavior: 'smooth' })}>Scanner</button>

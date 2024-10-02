@@ -26,6 +26,7 @@ const VerdictComponent = ({ ean, setEan }) => {
             type="text"
             value={ean}
             onChange={(e) => setEan(e.target.value)}
+            placeholder="Enter EAN"
             required
           />
         </label>

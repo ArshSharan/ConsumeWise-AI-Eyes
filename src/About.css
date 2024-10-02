@@ -1,21 +1,44 @@
-.about-container {
+
+   .about-container {
     text-align: center;
     color: rgb(0, 0, 0);
     animation: fadeIn 2s;
     height: 45vh;
-    max-width: 10000px;
-    width:80%;
+    max-width: 1000px; 
+    width: 80%;
     margin: 0 auto;
     padding: 30px;
-    background-color: rgba(181, 172, 146, 0.773); 
+    background-color: rgba(181, 172, 146, 0.773);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(1px);
-  }
+}
 
-  p {
-    font-size: 18;
+p {
+    font-size: 30px; 
     font-family: 'Times New Roman', sans-serif;
     font-style: italic;
-  }
-  
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        width: 90%; 
+        padding: 20px; 
+        height: auto; 
+    }
+
+    p {
+        font-size: 20px; 
+    }
+}
+
+@media (max-width: 480px) {
+    p {
+        font-size: 14px; 
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   font-family: 'Times New Roman', Times, serif;
@@ -11,10 +12,9 @@ header {
   color: white;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 15px 20px;
   z-index: 10;
   animation: fadeIn 2s;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -22,22 +22,20 @@ header {
   background-color: #fff; 
   color: #333; 
   border: none; 
-  padding: 10px 20px; 
-  font-size: 16px; 
+  padding: 10px 15px; 
+  font-size: 14px; /* Smaller for mobile */
   cursor: pointer;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
-  right: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .header button:hover {
-  background-color: #f0f0f0; 
-  color: #333; 
+  background-color: #f0f0f0;
 }
 
 header h1 {
   cursor: pointer;
-  font-size: 24px;
+  font-size: 22px; /* Adjusted size */
   margin: 0;
   transition: color 0.3s ease;
 }
@@ -50,7 +48,7 @@ nav button {
   background: none;
   color: white;
   border: 1px solid white;
-  padding: 10px 15px;
+  padding: 8px 12px; /* Slightly smaller for mobile */
   margin-left: 10px;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
@@ -62,21 +60,20 @@ nav button:hover {
 }
 
 nav {
-  padding-right: 30px;
+  padding-right: 20px; /* Adjusted padding for mobile */
 }
 
 main {
-  margin-top: 60px;
+  margin-top: 70px;
 }
 
 section {
-  padding: 50px;
+  padding: 30px; /* Adjust padding for mobile */
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 #home {
   background: url('../Images/gourmet.jpg') no-repeat center center/cover;
 }
@@ -95,6 +92,25 @@ section {
   background: url('../Images/breakfast.jpg') no-repeat center center/cover;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+#home, #scanner, #about, #contact {
+  background-size: cover;
+  background-position: center center;
+}
+
+#scanner {
+  font-family: 'Times New Roman';
+  font-size: 24px; /* Adjusted font size for mobile */
+}
+
+/* Fade-in animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -123,8 +139,8 @@ section {
   background-color: #4CAF50;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 8px 16px; /* Adjusted padding for mobile */
+  font-size: 14px; /* Adjusted font size for mobile */
   cursor: pointer;
   border-radius: 5px;
   margin: 0 10px;
@@ -132,4 +148,62 @@ section {
 
 .button-container button:hover {
   background-color: #3e8e41;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+  header {
+    padding: 10px 15px; /* Reduced padding on mobile */
+  }
+
+  header h1 {
+    font-size: 18px; /* Smaller font size for mobile */
+  }
+
+  .header button {
+    padding: 8px 12px;
+    font-size: 12px; /* Smaller font size for mobile */
+  }
+
+  nav button {
+    padding: 6px 10px; /* Smaller padding on buttons */
+  }
+
+  section {
+    padding: 20px; /* Reduce padding on mobile */
+  }
+
+  .button-container {
+    padding: 8px;
+    top: -30px; /* Adjust position for smaller screens */
+  }
+
+  .button-container button {
+    padding: 6px 12px;
+    font-size: 12px; /* Adjust font size */
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start; /* Stack items vertically */
+  }
+
+  nav {
+    padding-right: 0;
+    margin-top: 10px; /* Space below the logo */
+  }
+
+  .button-container {
+    top: -20px; /* Further adjustment for very small screens */
+  }
+
+  section {
+    padding: 15px; /* Minimized padding for mobile */
+  }
+
+  #scanner {
+    font-size: 20px; /* Even smaller font for small screens */
+  }
 }

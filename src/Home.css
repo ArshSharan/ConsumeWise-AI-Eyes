@@ -1,7 +1,7 @@
 .home-container {
   color: black;
   animation: fadeIn 2s;
-  height: 30vh;
+  height: 20vh;
   display: flex;
   align-items: center;
   padding-left: 20px;

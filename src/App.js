@@ -82,8 +82,8 @@ function App() {
         </h1>
         <nav>
           <button onClick={() => document.getElementById('home').scrollIntoView({ behavior: 'smooth' })}>Home</button>
+          <button onClick={() => document.getElementById('scanner').scrollIntoView({ behavior: 'smooth' })}>Scanner</button>
           <button onClick={() => document.getElementById('about').scrollIntoView({ behavior: 'smooth' })}>About</button>
-          <button onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>Scanner</button>
           <button onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>Contact</button>
         </nav>
       </header>
@@ -91,10 +91,7 @@ function App() {
         <section id="home">
           <Home />
         </section>
-        <section id="about">
-          <About />
-        </section>
-        <section id="products">
+        <section id="scanner">
 
           <VerdictComponent ean={ean} setEan={setEan} />
           <div className="verdict-container">
@@ -104,13 +101,15 @@ function App() {
             {!scanning && (
               <video ref={videoRef} autoPlay playsInline style={{ width: '100%' }} />
             )}
-
           </div>
-
+          </section>
+        <section id="about">
+          <About />
         </section>
         <section id="contact">
           <Contact />
         </section>
+       
       </main>
 
     </div>

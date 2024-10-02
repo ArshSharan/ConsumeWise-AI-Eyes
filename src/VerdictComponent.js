@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import parse from "html-react-parser"
+import "./VerdictComponent.css";
 
 const VerdictComponent = ({ ean, setEan }) => {
   const [response, setResponse] = useState(null);
@@ -16,8 +17,7 @@ const VerdictComponent = ({ ean, setEan }) => {
   };
 
   return (
-    <div>
-      <h1>Verdict API</h1>
+    <div className="verdict-container">
       <form onSubmit={handleSubmit}>
         <label>
           EAN:

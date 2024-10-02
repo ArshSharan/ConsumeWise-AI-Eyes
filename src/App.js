@@ -77,7 +77,7 @@ function App() {
   return (
     <div>
       <header>
-        <h1 onClick={() => document.getElementById('home').scrollIntoView({ behavior: 'smooth' })}>
+        <h1 onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}>
           Barcode Scanner
         </h1>
         <nav>
@@ -95,23 +95,17 @@ function App() {
           <About />
         </section>
         <section id="products">
-          <Products
-            handleScan={handleScan}
-            handleTakePicture={handleTakePicture}
-            scanning={scanning}
-            videoRef={videoRef}
-            videoStream={videoStream}
-            ean={ean}
-          />
+
           <VerdictComponent ean={ean} setEan={setEan} />
-          <h1>Barcode Scanner</h1>
-          <button onClick={handleScan}>{scanning ? 'Scan' : 'Stop'}</button>
-          {!scanning && (
-            <video ref={videoRef} autoPlay playsInline style={{ width: '100%' }} />
-          )}
-          <button onClick={handleTakePicture} disabled={!videoStream}>
-            Take Picture
-          </button>
+          <div className="verdict-container">
+            
+              <div >Scan Your Barcode Here</div>
+              <button class="scan-button" onClick={handleScan}>{scanning ? 'Scan' : 'Stop'}</button>
+              {!scanning && (
+                <video ref={videoRef} autoPlay playsInline style={{ width: '100%' }} />
+              )}
+            
+          </div>
           
         </section>
         <section id="contact">

@@ -11,9 +11,28 @@ header {
   color: white;
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 20px;
   z-index: 10;
   animation: fadeIn 2s;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header button {
+  background-color: #fff; 
+  color: #333; 
+  border: none; 
+  padding: 10px 20px; 
+  font-size: 16px; 
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+  right: 20px;
+}
+
+.header button:hover {
+  background-color: #f0f0f0; 
+  color: #333; 
 }
 
 header h1 {
@@ -55,19 +74,19 @@ section {
 }
 
 #home {
-  background: url('background.jpg') no-repeat center center/cover;
+  background: url('../Images/strawberry.jpg') no-repeat center center/cover;
 }
 
 #about {
-  background: url('background.jpg') no-repeat center center/cover;
+  background: url('../Images/tomato.jpg') no-repeat center center/cover;
 }
 
 #products {
-  background: url('background.jpg') no-repeat center center/cover;
+  background: radial-gradient( white, #FFF5F5, #FFCCCC, #FF9999, #FF6666, lightpink);
 }
 
 #contact {
-  background: url('background.jpg') no-repeat center center/cover;
+  background: url('../Images/gourmet.jpg') no-repeat center center/cover;
 }
 
 @keyframes fadeIn {
@@ -77,4 +96,34 @@ section {
   to {
     opacity: 1;
   }
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.button-container button {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.button-container button:hover {
+  background-color: #3e8e41;
 }

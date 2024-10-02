@@ -1,70 +1,80 @@
-.App {
-  font-family: Arial, sans-serif;
-  text-align: center;
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
 }
 
 header {
-  background-color: #333;
-  color: #fff;
-  padding: 1em;
-  text-align: center;
-}
-
-header nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #333;
+  color: white;
   display: flex;
   justify-content: space-between;
+  padding: 10px 20px;
+  z-index: 10;
+  animation: fadeIn 2s;
 }
 
-header nav ul li {
-  margin-right: 20px;
+header h1 {
+  cursor: pointer;
+  font-size: 24px;
+  margin: 0;
+  transition: color 0.3s ease;
 }
 
-header nav a {
-  color: #fff;
-  text-decoration: none;
+header h1:hover {
+  color: #f0c040;
 }
 
-.section {
-  padding: 2em;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+nav button {
+  background: none;
+  color: white;
+  border: 1px solid white;
+  padding: 10px 15px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
 }
 
-.home {
-  background-image: url(background.jpg);
-  background-size: cover;
-  background-position: center;
+nav button:hover {
+  background: #f0c040;
+  color: black;
 }
 
-.about {
-  background-image: url(background.jpg);
-  background-size: cover;
-  background-position: center;
+main {
+  margin-top: 60px;
 }
 
-.product {
-  background-image: url(background.jpg);
-  background-size: cover;
-  background-position: center;
+section {
+  padding: 50px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.contact {
-  background-image: url(background.jpg);
-  background-size: cover;
-  background-position: center;
+#home {
+  background: url('background.jpg') no-repeat center center/cover;
 }
 
-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+#about {
+  background: url('background.jpg') no-repeat center center/cover;
 }
 
-canvas {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+#products {
+  background: url('background.jpg') no-repeat center center/cover;
+}
+
+#contact {
+  background: url('background.jpg') no-repeat center center/cover;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

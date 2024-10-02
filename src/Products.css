@@ -1,0 +1,19 @@
+.products-container {
+    text-align: center;
+    color: white;
+    animation: fadeIn 2s;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #f0c040;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #e0a030;
+  }
+  

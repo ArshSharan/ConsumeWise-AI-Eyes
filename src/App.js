@@ -3,7 +3,7 @@ import { BarcodeDetector } from 'barcode-detector/pure';
 import VerdictComponent from './VerdictComponent.js';
 import Home from './Home.js';
 import About from './About.js';
-import Products from './Products.js';
+import Items from './Items.js';
 import Contact from './Contact.js';
 import './App.css';
 
@@ -38,7 +38,7 @@ function App() {
     if (barcodes.length > 0) {
       setEan(barcodes[0].rawValue);
       setScanning(true);
-      //stopWebcam();
+      stopWebcam();
     }
   };
 
@@ -98,21 +98,21 @@ function App() {
 
           <VerdictComponent ean={ean} setEan={setEan} />
           <div className="verdict-container">
-            
-              <div >Scan Your Barcode Here</div>
-              <button class="scan-button" onClick={handleScan}>{scanning ? 'Scan' : 'Stop'}</button>
-              {!scanning && (
-                <video ref={videoRef} autoPlay playsInline style={{ width: '100%' }} />
-              )}
-            
+
+            <div >Scan Your Barcode Here</div>
+            <button class="scan-button" onClick={handleScan}>{scanning ? 'Scan' : 'Stop'}</button>
+            {!scanning && (
+              <video ref={videoRef} autoPlay playsInline style={{ width: '100%' }} />
+            )}
+
           </div>
-          
+
         </section>
         <section id="contact">
           <Contact />
         </section>
       </main>
-      
+
     </div>
   );
 }

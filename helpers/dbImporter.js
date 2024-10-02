@@ -1,6 +1,6 @@
 import Product from "../models/product.js"
 import DocImport from "../models/docImport.js"
-import connectDB from "./dbController.js"
+import connectDB from "./dbInitializer.js"
 import { config } from "dotenv"
 import logger from "../logs/logger.js"
 
@@ -90,15 +90,14 @@ async function processDoc(num = 0) {
 }
 
 
-async function dispatch() {
+async function dispatch(innit = 0, count = 10_000) {
 
-  const count = await DocImport.countDocuments({});
   let count_cpy = count;
   const importJobs = [];
-  const moduloCheck = Math.floor(count / 10);
-  console.log(`Parsing ${count} documents`);
+  const moduloCheck = Math.floor(count / 5);
+  console.log(`Parsing ${count} documents from ${innit}`);
 
-  for (let i = 0; i < count; i++) {
+  for (let i = innit; i < count; i++) {
     importJobs.push(
       processDoc(i)
         .catch(err => logger.error(err))
@@ -109,9 +108,12 @@ async function dispatch() {
         })
     );
   }
-  console.log("All Jobs dispatched");
+  console.log("Jobs dispatched");
   await Promise.all(importJobs);
-  endImport()
 
 }
-dispatch();
+const countDocs = await DocImport.countDocuments({});
+for (let i = 150_000; i <= countDocs; i += 10_000) {
+  await dispatch(i, i + 10_000);
+}
+endImport()

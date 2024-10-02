@@ -37,8 +37,8 @@ function App() {
     console.log(barcodes[0]?.rawValue);
     if (barcodes.length > 0) {
       setEan(barcodes[0].rawValue);
-      setScanning(true);
       stopWebcam();
+      setScanning(true);
     }
   };
 
@@ -102,14 +102,14 @@ function App() {
               <video ref={videoRef} autoPlay playsInline style={{ width: '100%' }} />
             )}
           </div>
-          </section>
+        </section>
         <section id="about">
           <About />
         </section>
         <section id="contact">
           <Contact />
         </section>
-       
+
       </main>
 
     </div>

@@ -74,7 +74,7 @@ section {
 }
 
 #home {
-  background: url('../Images/strawberry.jpg') no-repeat center center/cover;
+  background: url('../Images/gourmet.jpg') no-repeat center center/cover;
 }
 
 #about {
@@ -82,11 +82,11 @@ section {
 }
 
 #products {
-  background: radial-gradient( white, #FFF5F5, #FFCCCC, #FF9999, #FF6666, lightpink);
+  background: url('../Images/strawberry.jpg') no-repeat center center/cover;
 }
 
 #contact {
-  background: url('../Images/gourmet.jpg') no-repeat center center/cover;
+  background: url('../Images/breakfast.jpg') no-repeat center center/cover;
 }
 
 @keyframes fadeIn {

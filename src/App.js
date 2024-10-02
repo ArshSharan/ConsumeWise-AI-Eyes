@@ -3,7 +3,7 @@ import { BarcodeDetector } from 'barcode-detector/pure';
 import VerdictComponent from './VerdictComponent.js';
 import Home from './Home.js';
 import About from './About.js';
-import Products from './Products.js';
+import Items from './Items.js';
 import Contact from './Contact.js';
 import './App.css';
 
@@ -49,7 +49,7 @@ function App() {
 
   const startWebcam = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
       setVideoStream(stream);
       videoRef.current.srcObject = stream;
       videoRef.current.play();
@@ -98,21 +98,21 @@ function App() {
 
           <VerdictComponent ean={ean} setEan={setEan} />
           <div className="verdict-container">
-            
-              <div >Scan Your Barcode Here</div>
-              <button class="scan-button" onClick={handleScan}>{scanning ? 'Scan' : 'Stop'}</button>
-              {!scanning && (
-                <video ref={videoRef} autoPlay playsInline style={{ width: '100%' }} />
-              )}
-            
+
+            <div >Scan Your Barcode Here</div>
+            <button class="scan-button" onClick={handleScan}>{scanning ? 'Scan' : 'Stop'}</button>
+            {!scanning && (
+              <video ref={videoRef} autoPlay playsInline style={{ width: '100%' }} />
+            )}
+
           </div>
-          
+
         </section>
         <section id="contact">
           <Contact />
         </section>
       </main>
-      
+
     </div>
   );
 }

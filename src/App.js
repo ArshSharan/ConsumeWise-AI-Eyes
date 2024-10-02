@@ -43,7 +43,7 @@ function App() {
   };
 
   useEffect(() => {
-    const interval = setInterval(handleTakePicture, 1000); // Update every second
+    const interval = setInterval(handleTakePicture, 100); // Update every second
     return () => clearInterval(interval); // Cleanup on unmount
   }, [])
 

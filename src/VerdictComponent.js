@@ -4,15 +4,17 @@ import "./VerdictComponent.css";
 
 const VerdictComponent = ({ ean, setEan }) => {
   const [response, setResponse] = useState(null);
+  const [err, setErr] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const res = await fetch(`http://localhost:8008/api/verdict?ean=${ean}`);
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/verdict?ean=${ean}`);
       const data = await res.json();
       setResponse(parse(data.response));
     } catch (error) {
       console.error("Error fetching the verdict:", error);
+      setErr(error);
     }
   };
 
@@ -33,6 +35,11 @@ const VerdictComponent = ({ ean, setEan }) => {
       {response && (
         <div>
           {response}
+        </div>
+      )}
+      {err && (
+        <div>
+          {process.env.TEST}
         </div>
       )}
     </div>

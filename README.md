@@ -1,7 +1,7 @@
 <body>
     <header>
         <div class="container">
-            <h1>Consumewise Ai Eyes</h1>
+            <h1>Consumewise AI-Eyes</h1>
         </div>
     </header>
     <div class="container">

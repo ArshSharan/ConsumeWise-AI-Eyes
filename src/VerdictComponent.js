@@ -14,32 +14,34 @@ const VerdictComponent = ({ ean, setEan }) => {
       setResponse(parse(data.response));
     } catch (error) {
       console.error("Error fetching the verdict:", error);
-      setErr(error);
+      setErr(error.message);
     }
   };
 
   return (
     <div className="verdict-container">
-      <form onSubmit={handleSubmit}>
-        <label>
-          <input
-            type="text"
-            value={ean}
-            onChange={(e) => setEan(e.target.value)}
-            placeholder="Enter EAN"
-            required
-          />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+      <div className="submit-form">
+        <form>
+          <label>
+            <input
+              type="text"
+              value={ean}
+              onChange={(e) => setEan(e.target.value)}
+              placeholder="Enter EAN"
+              required
+            />
+          </label>
+        </form>
+        <button type="submit" onClick={handleSubmit}>Submit</button>
+      </div>
       {response && (
-        <div>
+        <div className="response-container">
           {response}
         </div>
       )}
       {err && (
         <div>
-          {process.env.TEST}
+          {err}
         </div>
       )}
     </div>

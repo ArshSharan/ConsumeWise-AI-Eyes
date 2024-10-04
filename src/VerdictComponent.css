@@ -1,13 +1,24 @@
-
  .verdict-container {
   max-width: 1000px;
-  width: 60%; 
+  width: 70%;
   margin: 0 auto;
   padding: 30px;
   background-color: rgba(245, 245, 245, 0.8);
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
+  text-align: center;
+}
+
+ .response-container {
+  max-width: auto;
+  width: 60%;
+  margin: 10px ;
+  padding: 25px;
+}
+
+.submit-form{
+  text-align: center;
 }
 
 .VerdictComponent {
@@ -22,7 +33,7 @@
 }
 
 .VerdictComponent__header {
-  font-size: 20px;
+  font-size: auto;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -34,7 +45,7 @@
 }
 
 .VerdictComponent__verdict {
-  font-size: 60px; 
+  font-size: 60px;
   font-weight: bold;
   color: #333;
   margin-bottom: 10px;
@@ -69,8 +80,9 @@
 
 @media (max-width: 768px) {
   .verdict-container {
-      width: 90%; 
-      padding: 15px; 
+      width: 90%;
+      padding: 15px;
+      background-position: initial;
   }
 
   .VerdictComponent__header {
@@ -78,28 +90,28 @@
   }
 
   .VerdictComponent__description {
-      font-size: 14px; 
+      font-size: 14px;
   }
 
   .VerdictComponent__verdict {
-      font-size: 40px; 
+      font-size: 40px;
   }
 
   .VerdictComponent__actions-container {
       flex-direction: column;
-      align-items: center; 
+      align-items: center;
       padding: 15px;
   }
 
   .VerdictComponent__actions-container button {
-      width: 100%; 
-      margin: 5px 0; 
+      width: 100%;
+      margin: 5px 0;
   }
 }
 
 @media (max-width: 480px) {
   .VerdictComponent__header {
-      font-size: 16px; 
+      font-size: 16px;
   }
 
   .VerdictComponent__description {
@@ -107,6 +119,6 @@
   }
 
   .VerdictComponent__verdict {
-      font-size: 32px; 
+      font-size: 32px;
   }
 }

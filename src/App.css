@@ -1,0 +1,210 @@
+
+body {
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  z-index: 10;
+  animation: fadeIn 2s;
+  align-items: center;
+}
+
+.header button {
+  background-color: #fff; 
+  color: #333; 
+  border: none; 
+  padding: 10px 15px; 
+  font-size: 14px; 
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.header button:hover {
+  background-color: #f0f0f0;
+}
+
+header h1 {
+  cursor: pointer;
+  font-size: 22px; 
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+header h1:hover {
+  color: #f0c040;
+}
+
+nav button {
+  background: none;
+  color: white;
+  border: 1px solid white;
+  padding: 8px 12px; 
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+nav button:hover {
+  background: #f0c040;
+  color: black;
+}
+
+nav {
+  padding-right: 20px; 
+}
+
+main {
+  margin-top: 70px;
+}
+
+
+section {
+  padding: 30px; 
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#home {
+  background: url('../Images/gourmet.jpg') no-repeat center center/cover;
+}
+
+#scanner {
+  background: url('../Images/fruits.jpg') no-repeat center center/cover;
+  font-family: 'Times New Roman';
+  font-size: 30px;
+}
+
+#about {
+  background: url('../Images/tomato.jpg') no-repeat center center/cover;
+}
+
+#contact {
+  background: url('../Images/breakfast.jpg') no-repeat center center/cover;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+#home, #scanner, #about, #contact {
+  background-size: cover;
+  background-position: center center;
+}
+
+#scanner {
+  font-family: 'Times New Roman';
+  font-size: 24px; 
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.button-container button {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 8px 16px; 
+  font-size: 14px; 
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.button-container button:hover {
+  background-color: #3e8e41;
+}
+
+
+@media (max-width: 768px) {
+  header {
+    padding: 10px 15px; 
+  }
+
+  header h1 {
+    font-size: 18px;
+  }
+
+  .header button {
+    padding: 8px 12px;
+    font-size: 12px; 
+  }
+
+  nav button {
+    padding: 6px 10px; 
+  }
+
+  section {
+    padding: 20px; 
+  }
+
+  .button-container {
+    padding: 8px;
+    top: -30px; 
+  }
+
+  .button-container button {
+    padding: 6px 12px;
+    font-size: 12px; 
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start; 
+  }
+
+  nav {
+    padding-right: 0;
+    margin-top: 10px;
+  }
+
+  .button-container {
+    top: -20px; 
+  }
+
+  section {
+    padding: 15px; 
+  }
+
+  #scanner {
+    font-size: 20px; 
+  }
+}

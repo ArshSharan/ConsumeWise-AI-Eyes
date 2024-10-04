@@ -1,0 +1,23 @@
+.products-container {
+    text-align: center;
+    color: white;
+    animation: fadeIn 2s;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #009bfb;
+    border: none;
+    cursor: pointer;
+    background-image: linear-gradient(to bottom, #0073ff, #1294ff);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  button:hover {
+    background-image: linear-gradient(to bottom, #1294ff, #0073ff);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+  }
+  

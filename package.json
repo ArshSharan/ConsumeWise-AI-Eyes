@@ -1,46 +1,26 @@
 {
-  "name": "hackathon",
-  "version": "0.1.0",
-  "private": true,
+  "name": "consumewise-ai-eyes",
+  "module": "index.js",
   "type": "module",
+  "scripts": {
+    "dev": "nodemon ./index.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "start:prod": "node ./index.js",
+    "dbImport": "node ./helpers/dbImporter.js"
+  },
   "dependencies": {
-    "@google/generative-ai": "^0.20.0",
-    "@pixelverse/strichjs-sdk": "^1.5.2",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@zxing/browser": "^0.1.5",
-    "@zxing/library": "^0.21.3",
+    "@google/generative-ai": "^0.21.0",
     "barcode-detector": "^2.2.8",
-    "barcode-detector-polyfill": "^0.1.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "html-react-parser": "^5.1.16",
-    "html5-qrcode": "^2.3.8",
-    "jsqr": "^1.4.0",
+    "html-react-parser": "^5.1.17",
     "marked": "^14.1.2",
-    "mongoose": "^8.7.0",
     "nodemon": "^3.1.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4",
     "winston": "^3.14.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev": "nodemon ./index.js",
-    "start:prod": "node ./index.js",
-    "dbImport": "node ./helpers/dbImporter.js"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [

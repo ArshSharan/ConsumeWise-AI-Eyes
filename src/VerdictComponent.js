@@ -8,7 +8,11 @@ const VerdictComponent = ({ ean, setEan }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setErr(null)
     try {
+      if (!ean) {
+        throw new Error("Please enter an Ean number");
+      }
       const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/verdict?ean=${ean}`);
       const data = await res.json();
       setResponse(parse(data.response));

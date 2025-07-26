@@ -8,7 +8,7 @@
         <div class="main">
             <h2>About the Project</h2>
             <p>
-                Consumewise AI Eyes is a smart label reader designed to provide detailed information about food products. This project aims to help consumers make informed decisions by highlighting the health impacts of various food items and identifying any misleading claims made by manufacturers.
+                Consumewise is an AI-powered smart label reader designed to provide detailed ingredient and dietary information about food products. This project aims to help consumers make informed decisions by highlighting the health impacts of various food items and identifying any misleading claims made by manufacturers.
             </p>
             <h2>Features</h2>
             <ul>

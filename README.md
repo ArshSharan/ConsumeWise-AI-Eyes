@@ -22,7 +22,7 @@
                 To install and run ConsumewiseAiEyes, follow these steps:
             </p>
             <ol>
-                <li>Clone the repository: <code>git clone https://github.com/arshSharan/ConsumeWise-AI-Eyes</code></li>
+                <li>Clone the repository: <code>git clone https://github.com/ArshSharan/ConsumeWise-AI-Eyes</code></li>
                 <li>Navigate to the project directory: <code>cd ConsumeWise-AI-Eyes</code></li>
                 <li>Install the necessary dependencies: <code>npm install</code></li>
                 <li>Run the application: <code>npm start:prod</code></li>
